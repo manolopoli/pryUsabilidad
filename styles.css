@@ -1,0 +1,91 @@
+/* Variables en css en español */
+:root {
+    --color-fondo-pagina: #edf2f7;
+    --color-tarjeta: #ffffff;
+    --color-texto-principal: #161d2c;
+
+    --color-primario: #0d6;
+    --color-primario-relatado: #0b5ed7;
+    --color-foco-anillo: rgba(13, 110, 253, 0.35);
+
+    --color-boder: #e1e3e7;
+    --color-boder-resaltado: #889ab3;
+
+    /* estados de retroalimentacion*/
+    --color-error: #e0172b; 
+    --color-fondo-error: #fff5f5;
+    --color-exito: #198754;
+    --color-fondo-exito: #f0fdf4;
+    --color-alerta: #ffc107;
+    --color-fondo-alerta: #d97706f6;
+
+    --radio-borde: 6px
+    --fuente-sistema: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0; 
+}
+
+body {
+    font-family: var(--fuente-sistema);
+    background-color: var(--color-fondo-pagina);
+    color: var(--color-texto-principal);
+    line-height: 1.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1.5rem 
+}
+
+/* elelmento de contedor del formulario */
+.contenedor-formulario {
+    background-color: var(--color-tarjeta);
+    width: 100%;
+    max-width: 500px;
+    padding: 2.25rem;
+    border-radius: var(--radio-borde);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+
+    /* encabezado del formulario*/
+    .encabezado-formulario h1{
+        font-size: 1.5rem;
+        margin-bottom: 1.35rem;
+    }
+
+    .encabezado-formulario p{
+        font-size: 0.9rem;
+        color: var(--color-texto-secundario);
+        margin-bottom: 1.5rem;
+    }
+    .marca-obligatorio {
+        color: var(--color-error);
+        font-weight: bold;
+    }
+
+    /*3.Agrupacion y separacion de campos(ley de proximidad)*/
+    .grupo-campos {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.25rem;
+    }
+
+    /* 4. Entradas con altura ergonómica (Ley de Fitts: min 48px) */
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        height: 48px;   
+        padding: 0 0.75rem;
+        font-size: 1rem;
+        font-family: inherit;
+        border: 1.5px solid var(--color-boder);
+        border-radius: var(--radio-borde);
+        color: var(--color-texto-principal);
+        transition: border-color 0.2s  box-shadow 0.2s ;
+    }
+    input:hover {
+        border-color: var(--color-boder-resaltado);
+    }
+}

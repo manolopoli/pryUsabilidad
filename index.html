@@ -1,92 +1,106 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taller de usabilidad Portl de Registros</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taller de Usabilidad: Formulario Institucional</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main class="form-wrapper">
-    <header class="form-header">
+  <main class="contenedor-formulario">
+    <header class="encabezado-formulario">
       <h1>Crear Cuenta Institucional</h1>
-      <p>Diligencia el formulario. Los campos marcados con <span aria-hidden="true">*</span><span class="sr-only">obligatorio</span> son requeridos.</p>
+      <p>Diligencia tus datos. Los campos con asterisco (<span class="marca-obligatorio" aria-hidden="true">*</span>) son requeridos.</p>
     </header>
 
-    <!-- Notificación global para anunciar estados dinámicos al usuario -->
-    <div id="status-banner" class="status-banner" role="status" aria-live="polite"></div>
+    <!-- Región para anuncios dinámicos a lectores de pantalla y usuarios -->
+    <div id="panel-estado" class="panel-estado" role="status" aria-live="polite"></div>
 
-    <form id="registration-form" novalidate>
+    <form id="formulario-registro" novalidate>
       <!-- Campo 1: Nombre Completo -->
-      <div class="form-group" id="group-fullname">
-        <label for="fullname">Nombre completo <span class="required" aria-hidden="true">*</span></label>
+      <div class="grupo-campo" id="grupo-nombre-completo">
+        <label for="nombre-completo">
+          Nombre completo <span class="marca-obligatorio" aria-hidden="true">*</span>
+        </label>
         <input 
           type="text" 
-          id="fullname" 
-          name="fullname" 
+          id="nombre-completo" 
+          name="nombre-completo" 
           autocomplete="name" 
-          placeholder="Ej. Juan Pérez"
-          aria-describedby="fullname-hint fullname-error"
+          placeholder="Ej. Carlos Restrepo"
+          aria-describedby="pista-nombre error-nombre"
         >
-        <small id="fullname-hint" class="input-hint">Ingresa tu nombre y al menos un apellido.</small>
-        <span id="fullname-error" class="error-text" aria-live="assertive"></span>
+        <span id="pista-nombre" class="texto-pista">Ingresa tu nombre y al menos un apellido.</span>
+        <span id="error-nombre" class="texto-error" aria-live="assertive"></span>
       </div>
 
       <!-- Campo 2: Correo Institucional -->
-      <div class="form-group" id="group-email">
-        <label for="email">Correo institucional <span class="required" aria-hidden="true">*</span></label>
+      <div class="grupo-campo" id="grupo-correo">
+        <label for="correo">
+          Correo electrónico <span class="marca-obligatorio" aria-hidden="true">*</span>
+        </label>
         <input 
           type="email" 
-          id="email" 
-          name="email" 
+          id="correo" 
+          name="correo" 
           autocomplete="email" 
-          placeholder="nombre@institucion.edu.co"
-          aria-describedby="email-hint email-error"
+          placeholder="usuario@institucion.edu.co"
+          aria-describedby="pista-correo error-correo"
         >
-        <small id="email-hint" class="input-hint">Debe ser tu correo oficial institucional.</small>
-        <span id="email-error" class="error-text" aria-live="assertive"></span>
+        <span id="pista-correo" class="texto-pista">Debe terminar con el dominio @institucion.edu.co.</span>
+        <span id="error-correo" class="texto-error" aria-live="assertive"></span>
       </div>
 
-      <!-- Campo 3: Contraseña con medidor de robustez visible -->
-      <div class="form-group" id="group-password">
-        <label for="password">Contraseña <span class="required" aria-hidden="true">*</span></label>
-        <div class="password-wrapper">
+      <!-- Campo 3: Clave de Seguridad -->
+      <div class="grupo-campo" id="grupo-clave">
+        <label for="clave">
+          Contraseña <span class="marca-obligatorio" aria-hidden="true">*</span>
+        </label>
+        
+        <div class="envoltorio-clave">
           <input 
             type="password" 
-            id="password" 
-            name="password" 
+            id="clave" 
+            name="clave" 
             autocomplete="new-password"
-            aria-describedby="password-rules password-error"
+            aria-describedby="reglas-clave error-clave"
           >
-          <button type="button" id="toggle-password" class="btn-ghost" aria-label="Mostrar contraseña">
+          <button 
+            type="button" 
+            id="boton-alternar-clave" 
+            class="boton-alternar" 
+            aria-label="Mostrar contraseña"
+          >
             Mostrar
           </button>
         </div>
-        
-        <!-- Indicador visual y descriptivo de robustez (Heurística: Visibilidad del estado) -->
-        <div class="strength-meter">
-          <div id="strength-bar" class="strength-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="4"></div>
-        </div>
-        <p id="strength-label" class="strength-label">Nivel de seguridad: Sin ingresar</p>
 
-        <ul id="password-rules" class="password-checklist">
-          <li id="rule-length">Mínimo 8 caracteres</li>
-          <li id="rule-number">Al menos un número</li>
-          <li id="rule-uppercase">Al menos una letra mayúscula</li>
+        <!-- Indicador de Robustez Visual y Semántica -->
+        <div class="pista-medidor">
+          <div id="barra-progreso" class="barra-progreso" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="3"></div>
+        </div>
+        <span id="etiqueta-seguridad" class="etiqueta-seguridad">Seguridad: Sin ingresar</span>
+
+        <!-- Lista de chequeo en tiempo real -->
+        <ul id="reglas-clave" class="lista-reglas">
+          <li id="regla-longitud">Mínimo 8 caracteres</li>
+          <li id="regla-numero">Al menos un dígito numérico</li>
+          <li id="regla-mayuscula">Al menos una letra mayúscula</li>
         </ul>
-        <span id="password-error" class="error-text" aria-live="assertive"></span>
+        <span id="error-clave" class="texto-error" aria-live="assertive"></span>
       </div>
 
-      <!-- Botón de Envío con estado interactivo y preventivo -->
-      <div class="form-actions">
-        <button type="submit" id="btn-submit" class="btn-primary">
-          <span class="btn-text">Registrar cuenta</span>
-          <span class="loader" aria-hidden="true"></span>
+      <!-- Botones de Acción -->
+      <div class="acciones-formulario">
+        <button type="submit" id="boton-enviar" class="boton boton-principal">
+          <span class="texto-boton">Registrar cuenta</span>
+          <span class="icono-cargando" aria-hidden="true"></span>
         </button>
-        <button type="reset" id="btn-reset" class="btn-secondary">Restablecer</button>
+        <button type="reset" id="boton-reiniciar" class="boton boton-secundario">Limpiar</button>
       </div>
     </form>
   </main>
 
-  <script src="app.js"></script>
-</body></html>       
+  <script src="aplicacion.js"></script>
+</body>
+</html>
