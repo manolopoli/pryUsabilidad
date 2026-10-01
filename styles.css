@@ -48,7 +48,7 @@ body {
     padding: 2.25rem;
     border-radius: var(--radio-borde);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-
+}
     /* encabezado del formulario*/
     .encabezado-formulario h1{
         font-size: 1.5rem;
@@ -88,4 +88,11 @@ body {
     input:hover {
         border-color: var(--color-boder-resaltado);
     }
+
+/* Foco visible indispensable para accesibilidad por teclado */
+input:focus-visible,
+button:fcus-visible {
+  outline: none;
+  border-color: var(--color-primario);
+  box-shadow: 0 0 0 4px var(--color-foco-anillo);
 }
